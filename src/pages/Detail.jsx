@@ -5,6 +5,7 @@ import { Container } from '@mui/system';
 import Box from '@mui/material/Box';
 import { Divider } from '@mui/material';
 import Rating from '@mui/material/Rating';
+import Button from '@mui/material/Button';
 
 
 
@@ -30,6 +31,18 @@ export const Detail = () => {
     return (
       <div>Error...</div>
     )
+  }
+
+  const handleAddCart = async () => {
+
+    data.quantity = 1
+    const res = await axios.get(`http://localhost:5001/cart/${data.id}`)
+    console.log(res)
+    try {
+      await axios.post(`http://localhost:5001/cart`, data)
+    } catch (e) {
+      console.log(e)
+    }
   }
 
 
@@ -76,7 +89,7 @@ export const Detail = () => {
             Rp {data.price}
           </Box>
           <Box sx={{ mt: 3, mb: 3 }}>
-            <button>Cart Button</button>
+            <Button variant="contained" onClick={handleAddCart}>Cart Button</Button>
           </Box>
           <Divider />
           <Box sx={{ mt: 3, mb: 1 }}>
