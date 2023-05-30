@@ -15,7 +15,6 @@ export const Detail = () => {
 
   const getDetailProduct = async () => {
     const { data } = await axios.get(`http://localhost:5001/products/${id}`);
-    console.log(data)
     return data;
   }
 
@@ -112,7 +111,7 @@ export const Detail = () => {
             Rp {data.price}
           </Box>
           <Box sx={{ mt: 3, mb: 3 }}>
-            <Button variant="contained" onClick={handleAddCart}>Cart Button</Button>
+            <Button variant="contained" onClick={handleAddCart}>ADD CART</Button>
           </Box>
           <Divider />
           <Box sx={{ mt: 3, mb: 1 }}>

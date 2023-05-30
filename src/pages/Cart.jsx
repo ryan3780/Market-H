@@ -1,15 +1,16 @@
 import { Container } from '@mui/system';
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
 import Box from '@mui/material/Box';
 import axios from "axios";
+import DeleteIcon from '@mui/icons-material/Delete';
+import Button from '@mui/material/Button';
+
 
 
 export const Cart = () => {
 
   const getCartProducts = async () => {
     const { data } = await axios.get('http://localhost:5001/cart');
-    console.log(data)
     return data;
   }
 
@@ -27,11 +28,16 @@ export const Cart = () => {
     )
   }
 
+  const handleRemoveCartProduct = async (id) => {
+    await axios.delete(`http://localhost:5001/cart/${id}`)
+    window.location.reload()
+  }
+
 
   return (
     <Container maxWidth='xl'>
 
-      {data.length === 0 ? <Box sx={{ display: 'flex', justifyContent: 'center', mt: 10 }}>NO</Box> : <Box
+      {data.length === 0 ? <Box sx={{ display: 'flex', justifyContent: 'center', mt: 10 }}>PLZ FILL YOUR CART </Box> : <Box
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -47,19 +53,25 @@ export const Cart = () => {
             <Box sx={{ display: 'flex', backgroundColor: 'fff', mb: 1 }} key={idx}>
               <img src={product.image} alt="product image" width={50} height={50} />
               <Box sx={{ ml: 2 }}>
-                <div>
+                <Box sx={{ mb: 1 }}>
                   {product.category}
-                </div>
-                <div>
+                </Box>
+                <Box sx={{ mb: 1 }}>
                   {product.title}
-                </div>
-                <div>
+                </Box>
+                <Box sx={{ mb: 1 }}>
                   Rp {product.price}
-                </div>
-                <div>
-                  {product.quantity}
-                </div>
+                </Box>
+                <Box sx={{ mb: 1 }}>
+                  QUANTITY :  {product.quantity}
+                </Box>
+                <Box sx={{ mt: 2 }}>
+                  <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => handleRemoveCartProduct(product.id)}>
+                    Delete
+                  </Button>
+                </Box>
               </Box>
+
             </Box>
           )
         })}

@@ -3,8 +3,9 @@ import newClothe from '../assets/new_clothe.jpg'
 import { useQuery } from "@tanstack/react-query";
 import { Container } from '@mui/system';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import IconButton from '@mui/material/IconButton';
+import { Header } from "../components/Header";
 
 
 export const Admin = () => {
@@ -29,7 +30,6 @@ export const Admin = () => {
 
   const getProducts = async () => {
     const { data } = await axios.get('http://localhost:5001/products');
-    console.log(data)
     return data;
   }
 
@@ -50,10 +50,13 @@ export const Admin = () => {
 
   return (
     <>
-      <div>
-        <Button color="success" variant="contained" onClick={handleCreateProduct}>create test product</Button>
+      <Header />
+      <Box sx={{ position: 'fixed', backgroundColor: 'white', mt: 1 }}>
+        <IconButton color="primary" aria-label="add to shopping cart" onClick={handleCreateProduct}>
+          <AddShoppingCartIcon /> CREATE SAMPLE PRODCUT
+        </IconButton>
         {/* <button onClick={handleRemoveProduct}>create test product</button> */}
-      </div>
+      </Box>
       <Container maxWidth='xl'>
         <Box
           sx={{
