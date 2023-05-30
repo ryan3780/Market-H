@@ -1,4 +1,10 @@
 import { createBrowserRouter } from "react-router-dom"
+import { Layout } from "./layout/Layout"
+import { NotFound } from "./components/NotFound"
+import { Admin } from './pages/Admin'
+import { Products } from './pages/Products'
+import { Cart } from './pages/Cart'
+import { Detail } from "./pages/Detail"
 
 
 const routerInfo = [
