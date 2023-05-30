@@ -4,17 +4,21 @@ export const Header = () => {
 
   const headerContents = [
     {
-      label: 'Main',
+      label: 'MAIN',
       path: '/'
     },
     {
-      label: 'ALL Products',
+      label: 'ALL PRODUCTS',
       path: '/products'
     },
     {
-      label: 'Cart',
+      label: 'CART',
       path: '/cart'
     },
+    {
+      label: 'ADMIN',
+      path: '/admin'
+    }
   ]
 
   return (
