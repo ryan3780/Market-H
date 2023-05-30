@@ -2,7 +2,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Container } from '@mui/system';
 import Box from '@mui/material/Box';
-
+import { Link } from "react-router-dom";
 
 export const Products = () => {
 
@@ -45,10 +45,10 @@ export const Products = () => {
         >
           {data.map((product, idx) => {
             return (
-              <div key={idx}>
+              <Link to={`${product.id}`} key={idx}>
                 <img src={product.image} alt="product image" width={300} height={300} />
                 {product.category}
-              </div>
+              </Link>
             )
           })}
         </Box>
