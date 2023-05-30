@@ -36,13 +36,30 @@ export const Detail = () => {
   const handleAddCart = async () => {
 
     data.quantity = 1
-    const res = await axios.get(`http://localhost:5001/cart/${data.id}`)
-    console.log(res)
-    try {
+
+    const res = await axios.get(`http://localhost:5001/cart`)
+
+    if (res.data.length > 0) {
+      try {
+        res.data.map((item) => {
+          if (item.id === data.id) {
+            data.quantity = item.quantity + 1
+            axios.put(`http://localhost:5001/cart/${data.id}`, data)
+          }
+        })
+      } catch (e) {
+        console.log(e)
+      } finally {
+        res.data.filter((item) => {
+          if (item.id != data.id) {
+            axios.post(`http://localhost:5001/cart`, data)
+          }
+        })
+      }
+    } else {
       await axios.post(`http://localhost:5001/cart`, data)
-    } catch (e) {
-      console.log(e)
     }
+
   }
 
 
