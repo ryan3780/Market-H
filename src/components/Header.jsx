@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -37,13 +37,15 @@ export const Header = () => {
 
   const [anchorElNav, setAnchorElNav] = useState(null);
 
+  const location = useLocation()
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleCloseNavMenu = (event) => {
+  const handleCloseNavMenu = () => {
 
-    setAnchorElNav(event.currentTarget.innerText);
+    setAnchorElNav(null);
   };
 
   return (
@@ -71,7 +73,7 @@ export const Header = () => {
               LOGO
             </Typography>
 
-            {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -110,7 +112,7 @@ export const Header = () => {
                   </MenuItem>
                 ))}
               </Menu>
-            </Box> */}
+            </Box>
             <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
             <Typography
               variant="h5"
@@ -135,7 +137,7 @@ export const Header = () => {
                 <Button
                   key={page.label}
                   onClick={handleCloseNavMenu}
-                  sx={anchorElNav == page.label ? { my: 2, color: 'red', display: 'block', backgroundColor: 'rgb(49, 46, 46)' } : { my: 2, color: 'white', display: 'block' }}
+                  sx={location.pathname == page.path ? { my: 2, color: 'red', display: 'block', backgroundColor: 'rgb(49, 46, 46)' } : { my: 2, color: 'white', display: 'block' }}
                 >
                   <Link to={page.path} style={{ textDecoration: 'none', color: 'white' }}>
                     {page.label}
