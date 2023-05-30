@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import newClothe from '../assets/new_clothe.jpg'
 import { Products } from "./Products"
 
@@ -22,9 +22,12 @@ export const Admin = () => {
 
   const handleCreateProduct = async () => {
     const post = await axios.post('http://localhost:5001/products/', sample)
-    // navigate('/admin', { replace: true })
-    window.location.reload()
+    navigate('/admin', { state: 1 })
+    // window.location.reload()
   }
+
+  const { state } = useLocation()
+  console.log(state)
 
   return (
     <>

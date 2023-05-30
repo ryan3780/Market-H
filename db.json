@@ -275,6 +275,30 @@
         "count": 0
       },
       "id": 23
+    },
+    {
+      "title": "New Product from Admin",
+      "price": 999,
+      "description": "Neat for Women",
+      "category": "women's clothing",
+      "image": "/static/media/new_clothe.8efa1618a2cbd3412abc.jpg",
+      "rating": {
+        "rate": 5,
+        "count": 0
+      },
+      "id": 24
+    },
+    {
+      "title": "New Product from Admin",
+      "price": 999,
+      "description": "Neat for Women",
+      "category": "women's clothing",
+      "image": "/static/media/new_clothe.8efa1618a2cbd3412abc.jpg",
+      "rating": {
+        "rate": 5,
+        "count": 0
+      },
+      "id": 25
     }
   ],
   "cart": []
