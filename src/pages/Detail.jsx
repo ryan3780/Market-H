@@ -41,20 +41,26 @@ export const Detail = () => {
 
     if (res.data.length > 0) {
       try {
-        res.data.map((item) => {
-          if (item.id === data.id) {
-            data.quantity = item.quantity + 1
+
+        for (let i = 0; i < res.data.length; i++) {
+          if (res.data[i].id === data.id) {
+            data.quantity = res.data[i].quantity + 1
             axios.put(`http://localhost:5001/cart/${data.id}`, data)
           }
-        })
-      } catch (e) {
-        console.log(e)
-      } finally {
-        res.data.filter((item) => {
-          if (item.id != data.id) {
-            axios.post(`http://localhost:5001/cart`, data)
+        }
+
+        const checkExist = res.data.map((item) => {
+          if (item.id !== data.id) {
+            return false
           }
         })
+
+        if (!checkExist.includes(undefined)) {
+          axios.post(`http://localhost:5001/cart`, data)
+        }
+
+      } catch (e) {
+        console.log(e)
       }
     } else {
       await axios.post(`http://localhost:5001/cart`, data)
