@@ -6,6 +6,8 @@ import Box from '@mui/material/Box';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import IconButton from '@mui/material/IconButton';
 import { Header } from "../components/Header";
+import DeleteIcon from '@mui/icons-material/Delete';
+import Button from '@mui/material/Button';
 
 
 export const Admin = () => {
@@ -47,6 +49,10 @@ export const Admin = () => {
     )
   }
 
+  const handleRemoveCartProduct = async (id) => {
+    await axios.delete(`http://localhost:5001/products/${id}`)
+    window.location.reload()
+  }
 
   return (
     <>
@@ -76,16 +82,17 @@ export const Admin = () => {
                 p: 1,
 
               }} key={idx}>
-
                 <img src={product.image} alt="product image" width={300} height={300} />
-
-
+                <Button sx={{ mt: 2 }} variant="outlined" startIcon={<DeleteIcon />} onClick={() => handleRemoveCartProduct(product.id)}>
+                  Delete
+                </Button>
                 <Box sx={{ width: '300px', mt: 2 }}>
                   {product.title}
                 </Box>
                 <Box>
                   Rp {product.price}
                 </Box>
+
               </Box>
             )
           })}
