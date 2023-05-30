@@ -30,7 +30,8 @@ export const Cart = () => {
 
   return (
     <Container maxWidth='xl'>
-      <Box
+
+      {data.length === 0 ? <Box sx={{ display: 'flex', justifyContent: 'center', mt: 10 }}>NO</Box> : <Box
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -55,22 +56,19 @@ export const Cart = () => {
                 <div>
                   Rp {product.price}
                 </div>
+                <div>
+                  {product.quantity}
+                </div>
               </Box>
             </Box>
           )
         })}
 
       </Box>
-      {/* <Grid container spacing={2}>
-      {data.map((product, idx) => {
-        return (
-          <div key={idx}>
-            <img src={product.image} alt="product image" />
-            {product.category}
-          </div>
-        )
-      })}
-    </Grid> */}
+
+      }
+
+
     </Container>
   )
 }

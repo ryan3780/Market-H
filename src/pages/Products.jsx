@@ -37,18 +37,29 @@ export const Products = () => {
             flexWrap: 'wrap',
             m: 1,
             p: 1,
-            bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-            color: (theme) =>
-              theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
 
           }}
         >
           {data.map((product, idx) => {
             return (
-              <Link to={`${product.id}`} key={idx}>
-                <img src={product.image} alt="product image" width={300} height={300} />
-                {product.category}
-              </Link>
+              <Box sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                m: 1,
+                p: 1,
+
+              }} key={idx}>
+                <Link to={`${product.id}`} >
+                  <img src={product.image} alt="product image" width={300} height={300} />
+
+                </Link>
+                <Box sx={{ width: '300px', mt: 2 }}>
+                  {product.title}
+                </Box>
+                <Box>
+                  Rp {product.price}
+                </Box>
+              </Box>
             )
           })}
         </Box>
