@@ -35,25 +35,15 @@ export const Header = () => {
     }
   ]
 
-  const pages = ['Products', 'Pricing', 'Blog'];
-  const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  const handleCloseNavMenu = (event) => {
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setAnchorElNav(event.currentTarget.innerText);
   };
 
   return (
@@ -81,7 +71,7 @@ export const Header = () => {
               LOGO
             </Typography>
 
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            {/* <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -112,11 +102,15 @@ export const Header = () => {
               >
                 {headerContents.map((page) => (
                   <MenuItem key={page.label} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page.label}</Typography>
+                    <Typography textAlign="center">
+                      <Link to={page.path} style={{ textDecoration: 'none' }}>
+                        {page.label}
+                      </Link>
+                    </Typography>
                   </MenuItem>
                 ))}
               </Menu>
-            </Box>
+            </Box> */}
             <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
             <Typography
               variant="h5"
@@ -141,14 +135,16 @@ export const Header = () => {
                 <Button
                   key={page.label}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={anchorElNav == page.label ? { my: 2, color: 'red', display: 'block', backgroundColor: 'rgb(49, 46, 46)' } : { my: 2, color: 'white', display: 'block' }}
                 >
-                  {page.label}
+                  <Link to={page.path} style={{ textDecoration: 'none', color: 'white' }}>
+                    {page.label}
+                  </Link>
                 </Button>
               ))}
             </Box>
 
-            <Box sx={{ flexGrow: 0 }}>
+            {/* <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -176,7 +172,7 @@ export const Header = () => {
                   </MenuItem>
                 ))}
               </Menu>
-            </Box>
+            </Box> */}
           </Toolbar>
         </Container>
       </AppBar>
