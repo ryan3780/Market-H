@@ -102,8 +102,8 @@ export const Header = () => {
               }}
             >
               {headerContents.map((page) => (
-                <Link to={page.path} style={{ textDecoration: 'none' }}>
-                  <MenuItem key={page.label} onClick={handleCloseNavMenu} sx={location.pathname == page.path ? { my: 2, color: 'white', display: 'block', backgroundColor: 'blue' } : { my: 2, color: 'blue', display: 'block' }}>
+                <Link to={page.path} style={{ textDecoration: 'none' }} key={page.label}>
+                  <MenuItem key={page.label} onClick={handleCloseNavMenu} sx={location.pathname === page.path ? { my: 2, color: 'white', display: 'block', backgroundColor: 'blue' } : { my: 2, color: 'blue', display: 'block' }}>
                     <Typography textAlign="center">
                     </Typography>
                     {page.label}
@@ -136,7 +136,7 @@ export const Header = () => {
               <Button
                 key={page.label}
                 onClick={handleCloseNavMenu}
-                sx={location.pathname == page.path ? { my: 2, color: 'red', display: 'block', backgroundColor: 'rgb(49, 46, 46)' } : { my: 2, color: 'white', display: 'block' }}
+                sx={location.pathname === page.path ? { my: 2, color: 'red', display: 'block', backgroundColor: 'rgb(49, 46, 46)' } : { my: 2, color: 'white', display: 'block' }}
               >
                 <Link to={page.path} style={{ textDecoration: 'none', color: 'white' }}>
                   {page.label}

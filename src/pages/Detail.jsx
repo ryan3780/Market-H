@@ -89,7 +89,7 @@ export const Detail = () => {
           }}
         >
           <div key={data.id}>
-            <img src={data.image} alt="proudct image" width={`300px`} />
+            <img src={data.image} alt="proudct" width={`300px`} />
           </div>
         </Box>
         <Box

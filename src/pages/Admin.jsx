@@ -26,7 +26,7 @@ export const Admin = () => {
 
 
   const handleCreateProduct = async () => {
-    const post = await axios.post('http://localhost:5001/products/', sample)
+    await axios.post('http://localhost:5001/products/', sample)
     window.location.reload()
   }
 
@@ -82,7 +82,7 @@ export const Admin = () => {
                 p: 1,
 
               }} key={idx}>
-                <img src={product.image} alt="product image" width={300} height={300} />
+                <img src={product.image} alt="product" width={300} height={300} />
                 <Button sx={{ mt: 2 }} variant="outlined" startIcon={<DeleteIcon />} onClick={() => handleRemoveCartProduct(product.id)}>
                   Delete
                 </Button>

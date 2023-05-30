@@ -48,11 +48,9 @@ export const Products = () => {
               m: 1,
               p: 1,
 
-            }} key={idx}>
-              <Link to={`${product.id}`} style={{ textDecoration: 'none', color: 'black' }} >
-                <img src={product.image} alt="product image" width={300} height={300} />
-
-
+            }} key={product.title}>
+              <Link to={`${product.id}`} style={{ textDecoration: 'none', color: 'black' }}  >
+                <img src={product.image} alt="product" width={300} height={300} />
                 <Box sx={{ width: '300px', mt: 2 }}>
                   {product.title}
                 </Box>

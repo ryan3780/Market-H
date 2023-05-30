@@ -50,8 +50,8 @@ export const Cart = () => {
 
         {data.map((product, idx) => {
           return (
-            <Box sx={{ display: 'flex', backgroundColor: 'fff', mb: 1 }} key={idx}>
-              <img src={product.image} alt="product image" width={50} height={50} />
+            <Box sx={{ display: 'flex', backgroundColor: 'fff', mb: 1 }} key={product.title}>
+              <img src={product.image} alt="product" width={50} height={50} />
               <Box sx={{ ml: 2 }}>
                 <Box sx={{ mb: 1 }}>
                   {product.category}
@@ -71,7 +71,6 @@ export const Cart = () => {
                   </Button>
                 </Box>
               </Box>
-
             </Box>
           )
         })}
