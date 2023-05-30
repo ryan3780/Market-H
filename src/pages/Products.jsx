@@ -9,7 +9,7 @@ export const Products = () => {
 
   const getProducts = async () => {
     const { data } = await axios.get('http://localhost:5001/products');
-    console.log(data)
+
     return data;
   }
 
@@ -29,52 +29,42 @@ export const Products = () => {
 
 
   return (
-    <>
-      <Container maxWidth='xl'>
-        <Box
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            m: 1,
-            p: 1,
 
-          }}
-        >
-          {data.map((product, idx) => {
-            return (
-              <Box sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                m: 1,
-                p: 1,
+    <Container maxWidth='xl'>
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          m: 1,
+          p: 1,
 
-              }} key={idx}>
-                <Link to={`${product.id}`} >
-                  <img src={product.image} alt="product image" width={300} height={300} />
+        }}
+      >
+        {data.map((product, idx) => {
+          return (
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              m: 1,
+              p: 1,
 
-                </Link>
-                <Box sx={{ width: '300px', mt: 2 }}>
-                  {product.title}
-                </Box>
-                <Box>
-                  Rp {product.price}
-                </Box>
+            }} key={idx}>
+              <Link to={`${product.id}`} >
+                <img src={product.image} alt="product image" width={300} height={300} />
+
+              </Link>
+              <Box sx={{ width: '300px', mt: 2 }}>
+                {product.title}
               </Box>
-            )
-          })}
-        </Box>
-        {/* <Grid container spacing={2}>
-          {data.map((product, idx) => {
-            return (
-              <div key={idx}>
-                <img src={product.image} alt="product image" />
-                {product.category}
-              </div>
-            )
-          })}
-        </Grid> */}
-      </Container>
-    </>
+              <Box>
+                Rp {product.price}
+              </Box>
+            </Box>
+          )
+        })}
+      </Box>
+    </Container>
+
   )
 
 }

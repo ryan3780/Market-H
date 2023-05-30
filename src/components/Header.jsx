@@ -9,7 +9,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { useState } from "react";
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
@@ -130,7 +129,7 @@ export const Header = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            MARKET-H
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {headerContents.map((page) => (
