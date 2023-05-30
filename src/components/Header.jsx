@@ -102,13 +102,13 @@ export const Header = () => {
               }}
             >
               {headerContents.map((page) => (
-                <MenuItem key={page.label} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link to={page.path} style={{ textDecoration: 'none' }}>
-                      {page.label}
-                    </Link>
-                  </Typography>
-                </MenuItem>
+                <Link to={page.path} style={{ textDecoration: 'none' }}>
+                  <MenuItem key={page.label} onClick={handleCloseNavMenu} sx={location.pathname == page.path ? { my: 2, color: 'white', display: 'block', backgroundColor: 'blue' } : { my: 2, color: 'blue', display: 'block' }}>
+                    <Typography textAlign="center">
+                    </Typography>
+                    {page.label}
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
@@ -145,35 +145,6 @@ export const Header = () => {
             ))}
           </Box>
 
-          {/* <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box> */}
         </Toolbar>
       </Container>
     </AppBar>

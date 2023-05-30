@@ -49,16 +49,17 @@ export const Products = () => {
               p: 1,
 
             }} key={idx}>
-              <Link to={`${product.id}`} >
+              <Link to={`${product.id}`} style={{ textDecoration: 'none', color: 'black' }} >
                 <img src={product.image} alt="product image" width={300} height={300} />
 
+
+                <Box sx={{ width: '300px', mt: 2 }}>
+                  {product.title}
+                </Box>
+                <Box>
+                  Rp {product.price}
+                </Box>
               </Link>
-              <Box sx={{ width: '300px', mt: 2 }}>
-                {product.title}
-              </Box>
-              <Box>
-                Rp {product.price}
-              </Box>
             </Box>
           )
         })}
