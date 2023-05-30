@@ -1,24 +1,35 @@
-
+import { Link } from "react-router-dom";
 
 export const Header = () => {
 
   const headerContents = [
-    'Main',
-    'ALL Products',
-    'Cart'
+    {
+      label: 'Main',
+      path: '/'
+    },
+    {
+      label: 'ALL Products',
+      path: '/products'
+    },
+    {
+      label: 'Cart',
+      path: '/cart'
+    },
   ]
 
   return (
 
-    <>
+    <nav>
       {headerContents.map((item, idx) => {
         return (
           <li key={idx}>
-            {item}
+            <Link to={item.path} >
+              {item.label}
+            </Link>
           </li>
         )
       })}
-    </>
+    </nav>
 
   )
 }
