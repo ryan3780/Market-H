@@ -16,9 +16,9 @@
 ## 트리 구조
 📦src  
  ┣ 📂assets  --- 새로운 상품을 등록하기 위한 이미지  
- ┣ 📂components --- 공통 컴포넌트
- ┣ 📂layout --- 모든 페이지를 감싸는 레이아웃  
- ┣ 📂pages --- 페이지 모음
+ ┣ 📂components --- 공통 컴포넌트  
+ ┣ 📂layout --- 모든 페이지를 감싸는 레이아웃    
+ ┣ 📂pages --- 페이지 모음  
  ┣ 📜App.css  
  ┣ 📜App.js  
  ┣ 📜index.js   
